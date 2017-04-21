@@ -8,13 +8,14 @@ void runKekHash(char* source, int length, char* destination)
 	unsigned static const char strShadilay[] = "Shadilay ";
 	unsigned static const char strKek[] = "Kek ";
 	char scryptHash[32];
+	CSHA256 sha256 = CSHA256();
 	// Take SHA256(SHA256(blockHeader))
 	sha256.Reset();
-	sha256.Write(blockHeader, length);
+	sha256.Write(source, length);
 	sha256.Finalize(destination);
 	
 	sha256.Reset();
-	sha256.Write(hash, 32);
+	sha256.Write(destination, 32);
 	sha256.Finalize(destination);
 	
 	unsigned char* scryptScratchPad = (unsigned char*)malloc(131583);

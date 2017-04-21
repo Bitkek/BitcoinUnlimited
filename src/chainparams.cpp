@@ -139,7 +139,7 @@ public:
 				
 				
 				printf("The genesis hash is:\r\n");
-				unsigned char* bytePtr = (unsigned char*)consensus.hashGenesisBlock;
+				unsigned char* bytePtr = (unsigned char*)&consensus.hashGenesisBlock;
 				for (int i=0; i<32; i++)
 				{
 					printf("%02X", bytePtr[i]);

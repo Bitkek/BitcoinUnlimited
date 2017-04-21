@@ -54,6 +54,14 @@ CTxOut::CTxOut(const CAmount& nValueIn, CScript scriptPubKeyIn)
 
 uint256 CTxOut::GetHash() const
 {
+		printf("\r\nComputing hash of CTxOut:\r\n");
+		unsigned char* ptr = (unsigned char*)this;
+		int length = sizeof(*this);
+		for (int i=0; i<length; i++)
+		{
+			printf("%02X", ptr[i]);
+		}
+		printf("\r\n");
     return SerializeHash(*this);
 }
 
@@ -67,12 +75,20 @@ CMutableTransaction::CMutableTransaction(const CTransaction& tx) : nVersion(tx.n
 
 uint256 CMutableTransaction::GetHash() const
 {
+		printf("\r\nComputing hash of transaction:\r\n");
+		unsigned char* ptr = (unsigned char*)this;
+		int length = sizeof(*this);
+		for (int i=0; i<length; i++)
+		{
+			printf("%02X", ptr[i]);
+		}
+		printf("\r\n");
     return SerializeHash(*this);
 }
 
 void CTransaction::UpdateHash() const
 {
-		printf("Computing hash of transaction:\r\n");
+		printf("\r\nComputing hash of transaction:\r\n");
 		unsigned char* ptr = (unsigned char*)this;
 		int length = sizeof(*this);
 		for (int i=0; i<length; i++)

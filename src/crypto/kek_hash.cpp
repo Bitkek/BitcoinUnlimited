@@ -1,6 +1,7 @@
 #include "crypto/kek_hash.h"
 #include "crypto/sha256.h"
 #include "crypto/scrypt.h"
+#include "scrypt.h"
 #include <stdlib.h>
 
 void runKekHash(char* source, int length, char* destination)
@@ -11,12 +12,12 @@ void runKekHash(char* source, int length, char* destination)
 	CSHA256 sha256 = CSHA256();
 	// Take SHA256(SHA256(blockHeader))
 	sha256.Reset();
-	sha256.Write(source, length);
-	sha256.Finalize(destination);
+	sha256.Write((const unsigned char*)source, length);
+	sha256.Finalize((unsigned char*)destination);
 	
 	sha256.Reset();
-	sha256.Write(destination, 32);
-	sha256.Finalize(destination);
+	sha256.Write((const unsigned char*)destination, 32);
+	sha256.Finalize((unsigned char*)destination);
 	
 	unsigned char* scryptScratchPad = (unsigned char*)malloc(131583);
 	scrypt_1024_1_1_256_sp_sse2((const char*)destination, (char*)scryptHash, (char*)scryptScratchPad);

@@ -9,6 +9,13 @@
 void runKekHash(char* source, int length, char* destination)
 {
 	printf("runKekHash length=%i\r\n", length);
+	printf("block header:\r\n");
+	for (int i=0; i<length; i++)
+	{
+		printf("%02X", (unsigned char)source[i]);
+	}
+	printf("\r\n");
+	
 	unsigned static const char strShadilay[] = "Shadilay ";
 	unsigned static const char strKek[] = "Kek ";
 	char scryptHash[32];

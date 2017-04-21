@@ -8,6 +8,7 @@
 
 void runKekHash(char* source, int length, char* destination)
 {
+	printf("runKekHash length=%i\r\n", length);
 	unsigned static const char strShadilay[] = "Shadilay ";
 	unsigned static const char strKek[] = "Kek ";
 	char scryptHash[32];

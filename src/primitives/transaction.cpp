@@ -67,6 +67,11 @@ CMutableTransaction::CMutableTransaction(const CTransaction& tx) : nVersion(tx.n
 
 uint256 CMutableTransaction::GetHash() const
 {
+    return SerializeHash(*this);
+}
+
+void CTransaction::UpdateHash() const
+{
 		printf("Computing hash of transaction:\r\n");
 		unsigned char* ptr = (unsigned char*)this;
 		int length = sizeof(*this);
@@ -75,11 +80,6 @@ uint256 CMutableTransaction::GetHash() const
 			printf("%02X", ptr[i]);
 		}
 		printf("\r\n");
-    return SerializeHash(*this);
-}
-
-void CTransaction::UpdateHash() const
-{
     *const_cast<uint256*>(&hash) = SerializeHash(*this);
 }
 

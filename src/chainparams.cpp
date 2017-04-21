@@ -136,6 +136,17 @@ public:
         genesis = CreateGenesisBlock(1492705689, 999591481, 0x22ffffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 				consensus.BIP34Hash = consensus.hashGenesisBlock;
+				
+				
+				printf("The genesis hash is:\r\n");
+				unsigned char* bytePtr = (unsigned char*)consensus.hashGenesisBlock;
+				for (int i=0; i<32; i++)
+				{
+					printf("%02X", bytePtr[i]);
+				}
+				printf("\r\n");
+				
+				
         assert(consensus.hashGenesisBlock == uint256S("0x0000C4782514F76117CEF8C26E82CCFEDB25CC63C56309440E0332D2FD78B7D6"));
         assert(genesis.hashMerkleRoot == uint256S("0x4D8F18EB116E9A2E1D6710A50A6404AB122559BBBE54CD84CF3EA60097963085"));
 

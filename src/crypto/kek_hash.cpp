@@ -20,7 +20,7 @@ void runKekHash(char* source, int length, char* destination)
 	printf("Intermediate SHA256 is:\r\n");
 	for (int i=0; i<32; i++)
 	{
-		printf("%02X", destination[i]);
+		printf("%02X", (unsigned char)destination[i]);
 	}
 	
 	sha256.Reset();
@@ -30,7 +30,7 @@ void runKekHash(char* source, int length, char* destination)
 	printf("\r\nFinal SHA256 is:\r\n");
 	for (int i=0; i<32; i++)
 	{
-		printf("%02X", destination[i]);
+		printf("%02X", (unsigned char)destination[i]);
 	}
 	
 	unsigned char* scryptScratchPad = (unsigned char*)malloc(131583);
@@ -40,7 +40,7 @@ void runKekHash(char* source, int length, char* destination)
 	printf("\r\nScrypt hash is:\r\n");
 	for (int i=0; i<32; i++)
 	{
-		printf("%02X", scryptHash[i]);
+		printf("%02X", (unsigned char)scryptHash[i]);
 	}
 
 	for (int i=0; i<32; i++)
@@ -51,7 +51,7 @@ void runKekHash(char* source, int length, char* destination)
 	printf("\r\nScrypt^(SHA256^2) is:\r\n");
 	for (int i=0; i<32; i++)
 	{
-		printf("%02X", destination[i]);
+		printf("%02X", (unsigned char)destination[i]);
 	}
 	
 	// Xor with Kek or Shadilay, effectively requiring Kek or Shadilay to be written at the end of the xor'd hashes
@@ -73,6 +73,6 @@ void runKekHash(char* source, int length, char* destination)
 	printf("\r\nAfter kek/shadilay overlay is:\r\n");
 	for (int i=0; i<32; i++)
 	{
-		printf("%02X", destination[i]);
+		printf("%02X", (unsigned char)destination[i]);
 	}
 }

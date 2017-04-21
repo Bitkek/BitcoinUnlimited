@@ -3,6 +3,8 @@
 #include "crypto/scrypt.h"
 #include "scrypt.h"
 #include <stdlib.h>
+#include <iostream>
+#include <stdio.h>
 
 void runKekHash(char* source, int length, char* destination)
 {

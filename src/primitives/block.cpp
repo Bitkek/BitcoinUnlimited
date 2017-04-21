@@ -10,10 +10,14 @@
 #include "tinyformat.h"
 #include "utilstrencodings.h"
 #include "crypto/common.h"
+#include "crypto/kek_hash.h"
 
 uint256 CBlockHeader::GetHash() const
 {
-    return SerializeHash(*this);
+	uint256 ret;
+	runKekHash((char*)this, sizeof(*this), (char*)&ret);
+	return ret;
+  //return SerializeHash(*this);
 }
 
 std::string CBlock::ToString() const

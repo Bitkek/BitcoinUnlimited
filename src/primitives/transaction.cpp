@@ -9,6 +9,8 @@
 #include "hash.h"
 #include "tinyformat.h"
 #include "utilstrencodings.h"
+#include <iostream>
+#include <stdio.h>
 
 std::string COutPoint::ToString() const
 {
@@ -65,6 +67,14 @@ CMutableTransaction::CMutableTransaction(const CTransaction& tx) : nVersion(tx.n
 
 uint256 CMutableTransaction::GetHash() const
 {
+		printf("Computing hash of transaction:\r\n");
+		unsigned char* ptr = (unsigned char*)this;
+		int length = sizeof(*this);
+		for (int i=0; i<length; i++)
+		{
+			printf("%02X", ptr[i]);
+		}
+		printf("\r\n");
     return SerializeHash(*this);
 }
 

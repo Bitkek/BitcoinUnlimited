@@ -20,7 +20,7 @@ void runKekHash(char* source, int length, char* destination)
 	sha256.Finalize((unsigned char*)destination);
 	
 	unsigned char* scryptScratchPad = (unsigned char*)malloc(131583);
-	scrypt_1024_1_1_256_sp_sse2((const char*)destination, (char*)scryptHash, (char*)scryptScratchPad);
+	scrypt_1024_1_1_256_sp_sse2((const char*)source, (char*)scryptHash, (char*)scryptScratchPad);
 	free(scryptScratchPad);
 	for (int i=0; i<32; i++)
 	{

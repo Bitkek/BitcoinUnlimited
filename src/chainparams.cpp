@@ -133,11 +133,11 @@ public:
         nMaxTipAge = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1492705689, 999378599, 0x22ffffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1492705689, 999591481, 0x22ffffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 				consensus.BIP34Hash = consensus.hashGenesisBlock;
-        assert(consensus.hashGenesisBlock == uint256S("0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"));
-        assert(genesis.hashMerkleRoot == uint256S("0x4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000C4782514F76117CEF8C26E82CCFEDB25CC63C56309440E0332D2FD78B7D6"));
+        assert(genesis.hashMerkleRoot == uint256S("0x4D8F18EB116E9A2E1D6710A50A6404AB122559BBBE54CD84CF3EA60097963085"));
 
         vSeeds.push_back(CDNSSeedData("bitkek.com", "seed1.bitkek.com"));
         vSeeds.push_back(CDNSSeedData("bitkek.com", "seed2.bitkek.com"));
